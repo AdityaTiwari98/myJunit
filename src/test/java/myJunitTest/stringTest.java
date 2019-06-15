@@ -1,8 +1,8 @@
 package myJunitTest;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 public class stringTest {
 
@@ -15,45 +15,47 @@ public class stringTest {
 	 * case 6:input - "Aabcd"
 	 * case 7:input - "qwertyasd"
 	 */
+	
+	public static StringManipulate sM;
+	@BeforeAll
+    public static void init(){
+		sM=new StringManipulate();
+    }
+	
 	@Test
 	public void test1() {
-		StringManipulate sM=new StringManipulate();
 		assertEquals("",sM.man("a"));
 	}
 	
 	@Test
 	public void test2() {
-		StringManipulate sM=new StringManipulate();
+		
 		assertEquals("b",sM.man("b"));
 	}
 	
 	@Test
 	public void test3() {
-		StringManipulate sM=new StringManipulate();
 		assertEquals("",sM.man(""));
 	}
 	
 	@Test
 	public void test4() {
-		StringManipulate sM=new StringManipulate();
 		assertEquals("",sM.man("aA"));
+		assertEquals("bAA",sM.man("AAbAA"));
 	}
 	
 	@Test
-	public void tes5t() {
-		StringManipulate sM=new StringManipulate();
+	public void test5() {
 		assertEquals("bb",sM.man("bb"));
 	}
 	
 	@Test
 	public void test6() {
-		StringManipulate sM=new StringManipulate();
 		assertEquals("bcd",sM.man("Aabcd"));
 	}
 	
 	@Test
 	public void test7() {
-		StringManipulate sM=new StringManipulate();
 		assertEquals("qwertyasd",sM.man("qwertyasd"));
 	}
 }
